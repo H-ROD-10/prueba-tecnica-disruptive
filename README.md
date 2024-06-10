@@ -10,7 +10,7 @@ Clonación del Repositorio:
 
 Clona el repositorio del proyecto en tu directorio local:
 
-git clone https://github.com/tu-usuario/proyecto-node-express-mongoose.git
+git clone https://github.com/H-ROD-10/prueba-tecnica-disruptive.git
 
 Instalación de Dependencias:
 
@@ -20,33 +20,6 @@ npm install
 Configuración de Variables de Entorno:
 
 Crea un archivo .env en la raíz del proyecto y define las variables de entorno necesarias para la conexión a la base de datos MongoDB. Solicitarlas.
-
-
-Proyecto Node Express Mongoose MongoDB
-Descripción
-Este proyecto implementa una API REST completa que gestiona las colecciones de usuarios, temas, categorías y contenido en una base de datos MongoDB utilizando Node.js, Express y Mongoose.
-
-Requisitos
-Node.js versión 20 o superior
-MongoDB instalado y configurado
-Configuración
-Clonación del Repositorio:
-
-Clona el repositorio del proyecto en tu directorio local:
-
-Bash
-git clone https://github.com/tu-usuario/proyecto-node-express-mongoose.git
-
-Instalación de Dependencias:
-
-Accede al directorio del proyecto clonado e instala las dependencias necesarias:
-
-npm install
-
-Configuración de Variables de Entorno:
-
-Crea un archivo .env en la raíz del proyecto y define las variables de entorno necesarias para la conexión a la base de datos MongoDB. Solicitarlas:
-
 
 Ejecución
 Inicio del Servidor de Desarrollo:
