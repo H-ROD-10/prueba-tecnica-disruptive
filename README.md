@@ -28,6 +28,14 @@ Inicia el servidor de desarrollo utilizando el siguiente comando:
 
 npm run dev
 
+usuario admin: admin_test@test.com
+usuario reader: reader_test@test.com
+usuario creato: creator_test@test.com
+
+password: 12345678
+
+Se utiliza la misma password para cada uno de lo usuarios.
+
 El servidor se iniciará en el puerto 8000 por defecto.
 
 Acceso a la API REST:
@@ -49,7 +57,3 @@ Para una descripción más detallada de la API, incluyendo los parámetros y res
 
 Contribuciones
 Se agradecen las contribuciones a este proyecto. Si deseas realizar cambios o agregar nuevas funcionalidades, crea una solicitud de extracción (pull request) en el repositorio de GitHub.
-
-
-
-
