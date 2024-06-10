@@ -1,0 +1,554 @@
+{
+	"info": {
+		"_postman_id": "9c3731e3-3c79-46fa-bf9f-3123ec737487",
+		"name": "Disruptive",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11060795"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "http://localhost:8000/api/v1/user/signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"lia\",\r\n    \"email\": \"lia@gmail.com\",\r\n    \"password\": \"12345678\",\r\n    \"role\": \"reader\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/user/signup",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "user", "signup"]
+						},
+						"description": "\n### User Signup\n\nThis endpoint allows users to sign up by providing their username, email, password, and role.\n\n#### Request Body\n- `username` (string, required): The username of the user.\n- `email` (string, required): The email address of the user.\n- `password` (string, required): The password for the user account.\n- `role` (string, required): The role of the user.\n\n#### Response\nThe response of this request is a JSON object following the schema below:\n\n```json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"status\": {\n      \"type\": \"string\"\n    },\n    \"message\": {\n      \"type\": \"string\"\n    }\n  }\n}\n```\n"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8000/api/v1/user/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"hector@gmail.com\",\r\n  \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/user/login",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "user", "login"]
+						},
+						"description": "### User Login\n\nThis API endpoint is used to authenticate a user and generate a token for further access to protected resources.\n\n#### Request Body\n\n- `email` (string, required): The email of the user.\n    \n- `password` (string, required): The password of the user.\n    \n\n#### Response\n\nThe response will be a JSON object with the following schema:\n\n``` json\n{\n    \"success\": boolean,\n    \"token\": string,\n    \"user\": {\n        \"_id\": string,\n        \"username\": string,\n        \"email\": string,\n        \"role\": string,\n        \"permissions\": {\n            \"create\": boolean,\n            \"read\": boolean,\n            \"update\": boolean,\n            \"delete\": boolean\n        },\n        \"createdAt\": string,\n        \"updatedAt\": string,\n        \"__v\": number\n    }\n}\n\n ```\n\n- `success` (boolean): Indicates if the login was successful.\n    \n- `token` (string): The authentication token for the user.\n    \n- `user` (object): Details of the authenticated user including their ID, username, email, role, permissions, creation timestamp, update timestamp, and version."
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8000/api/v1/user/profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/user/profile",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "user", "profile"]
+						},
+						"description": "## Retrieve User Profile\n\nThis endpoint makes an HTTP GET request to retrieve the user's profile information.\n\n### Request\n\nNo request body is required for this endpoint.\n\n### Response\n\nThe response will be a JSON object representing the user's profile information. You can refer to the JSON schema below for the detailed structure of the response.\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"user_id\": {\n      \"type\": \"string\"\n    },\n    \"username\": {\n      \"type\": \"string\"\n    },\n    \"email\": {\n      \"type\": \"string\"\n    },\n    \"full_name\": {\n      \"type\": \"string\"\n    },\n    \"avatar_url\": {\n      \"type\": \"string\"\n    },\n    \"created_at\": {\n      \"type\": \"string\",\n      \"format\": \"date-time\"\n    },\n    \"updated_at\": {\n      \"type\": \"string\",\n      \"format\": \"date-time\"\n    }\n  }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8000/api/v1/user/users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/user/list/?page=1&limit=2",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "user", "list", ""],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8000/api/v1/user/update-role",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\":\"666512a0fd1fb7f4905e442c\",\r\n    \"role\": \"creator\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/user/update-role",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "user", "update-role"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8000/api/v1/user/delete/666512b1fd1fb7f4905e442e",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/user/delete/666512b1fd1fb7f4905e442e",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"delete",
+								"666512b1fd1fb7f4905e442e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Url de Videos de Youtube\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/category/create",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "category", "create"]
+						},
+						"description": "# Create Category\n\nThis endpoint allows you to create a new category.\n\n## Request\n\n- Method: POST\n    \n- URL: `http://localhost:8000/api/v1/category/create`\n    \n- Headers:\n    - Content-Type: application/json\n        \n- Body:\n    \n    ``` json\n    {\n        \"title\": \"\"\n    }\n    \n     ```\n    \n\n## Response\n\nThe response schema for this request is as follows:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"status\": {\n            \"type\": \"string\"\n        },\n        \"message\": {\n            \"type\": \"string\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"id\": {\n                    \"type\": \"string\"\n                },\n                \"title\": {\n                    \"type\": \"string\"\n                }\n            }\n        }\n    }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8000/api/v1/category/update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"url-videos-youtuve\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/category/6665d0966d025ea2334b58d3",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "category", "6665d0966d025ea2334b58d3"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8000/api/v1/category/list?page=1&limit=10",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/category/list?page=1&limit=10",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "category", "list"],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/category/6665d0966d025ea2334b58d3",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "category", "6665d0966d025ea2334b58d3"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/category/6665d0966d025ea2334b58d3",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "category", "6665d0966d025ea2334b58d3"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8000/api/v1/category?title=Imagenes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/category?title=Imagenes",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "category"],
+							"query": [
+								{
+									"key": "title",
+									"value": "Imagenes"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "topic",
+			"item": [
+				{
+					"name": "getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/topic/6665da322538999c47c39b43",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "topic", "6665da322538999c47c39b43"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8000/api/v1/topic/create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Historia\",\r\n    \"image\": {\r\n        \"public_id\":\"3\",\r\n        \"url\": \"https://images.ecestaticos.com/0Dblv2Ji_jMUJ67zDxSFffCUOHU=/0x86:1250x742/600x450/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fb45%2F161%2F2b4%2Fb451612b46782078431528832573321f.jpg\"\r\n    }\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/topic/create",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "topic", "create"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n       \"title\": \"Historia Universal\",\r\n    \"image\": {\r\n        \"public_id\":\"3\",\r\n        \"url\": \"https://images.ecestaticos.com/0Dblv2Ji_jMUJ67zDxSFffCUOHU=/0x86:1250x742/600x450/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fb45%2F161%2F2b4%2Fb451612b46782078431528832573321f.jpg\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/topic/6665da322538999c47c39b43",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "topic", "6665da322538999c47c39b43"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/topic/6665da322538999c47c39b43",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "topic", "6665da322538999c47c39b43"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8000/api/v1/topic/list?page=1&limit=1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/topic/list?page=1&limit=1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "topic", "list"],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8000/api/v1/topic?title=Matematicas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/topic?title=Matematicas",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "topic"],
+							"query": [
+								{
+									"key": "title",
+									"value": "Matematicas"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "content",
+			"item": [
+				{
+					"name": "http://localhost:8000/api/v1/content/create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Documento Derivadas\",\r\n    \"rosource\": \"https://cdn-icons-png.freepik.com/512/81/81503.png\",\r\n    \"categoryId\": \"6665d06a6d025ea2334b58cb\",\r\n    \"topicId\": \"6665d90c2538999c47c39b3b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/content/create",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "content", "create"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8000/api/v1/content/6665e3cf6a51d564317e6ed0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/content/6665e3cf6a51d564317e6ed0",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "content", "6665e3cf6a51d564317e6ed0"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8000/api/v1/content/6665e3cf6a51d564317e6ed0",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Documento Sobre Derivadas\",\r\n    \"rosource\": \"https://cdn-icons-png.freepik.com/512/81/81503.png\",\r\n    \"categoryId\": \"6665d06a6d025ea2334b58cb\",\r\n    \"topicId\": \"6665d90c2538999c47c39b3b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/content/6665e3cf6a51d564317e6ed0",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "content", "6665e3cf6a51d564317e6ed0"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8000/api/v1/content/list?categoryId=6665d0786d025ea2334b58cf&topicId=6665d9a42538999c47c39b3f",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/content/list?categoryId=6665d0786d025ea2334b58cf&topicId=6665d9a42538999c47c39b3f",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "content", "list"],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "6665d0786d025ea2334b58cf"
+								},
+								{
+									"key": "topicId",
+									"value": "6665d9a42538999c47c39b3f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8000/api/v1/content?title=Fisica+Cuantica",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/content?title=Fisica+Cuantica",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8000",
+							"path": ["api", "v1", "content"],
+							"query": [
+								{
+									"key": "title",
+									"value": "Fisica+Cuantica"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
